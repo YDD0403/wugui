@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			#box{
+				width: 400px;
+				height: auto;
+				margin: 0 auto;
+			}
+			.myul{
+				display: flex;
+				justify-content: space-between;
+			}
+			.myul li{
+				color: green;
+				margin-top:10px ;
+			}
+			p{
+				font-size:20px ;
+			}
+			span{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p>淘乐，发现更多生活,<span> 快乐</span>就在你身边</p>
+			<ul class="myul">
+				<li>近期热门…………</li>
+				<li>(更多)</li>
+			</ul>
+			<ul class="mybody">
+			
+		</ul>
+		<button type="button" id="btn">更多………</button>
+		</div>
+		
+	</body>
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var data = [{
+				name: '言语之庭'
+			}, {
+				name: '斯托克'
+			}, {
+				name: '宿醉'
+			}, {
+				name: '巨人捕手杰克'
+			}, {
+				name: '副作用'
+			}]
+			var mybody=$('.mybody')
+			function datainner(){
+				mybody[0].innerHTML=''
+				for (var i = 0; i < data.length; i++) {
+					mybody[0].innerHTML+=
+					`<li>${data[i].name}</li>`
+				}
+				
+			}
+			datainner()
+			function mystye(){
+				$('li').css({
+					'margin-top': '10px',
+					'font-size': '20px',
+					'height': '40px',
+					'line-height': '40px'
+				})
+			$('ul:eq(1)').find('li:even').css({'background-color': 'rgba(0,0,0,0.2)'})
+				$('ul:eq(1)').find('li:eq(2)').css('background-color', '#ff99cc')
+			}
+			mystye()
+			var a=0
+			var btn=$('#btn')
+			btn.click(function(){
+				if(a%2==0){
+				data.push({name:'血肉之躯'},{name:'7号房的礼物'},{name:'惊声尖笑'})
+				datainner()
+				mystye()
+				}else{
+					
+					data.splice(data.length-3)
+					datainner()
+				mystye()
+				}
+				a++
+				console.log(a)
+			})
+		})
+	</script>
+</html>

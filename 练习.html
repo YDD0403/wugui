@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			#box {
+				width: 400px;
+				height: auto;
+				margin: 0 auto;
+
+			}
+
+			
+
+			/* ul{
+				margin: 0 auto;
+				width: 400px;
+			}
+			li{
+				
+				margin-top: 20px;
+			}
+			.myul{
+				justify-content: space-between;
+			 display: flex; 
+				
+			} */
+		</style>
+	</head>
+	<body>
+		<div id="box">
+
+
+			<p>淘乐，发现更多生活,<span> 快乐</span>就在你身边</p>
+			<ul class="myul">
+				<li>近期热门…………</li>
+				<li>(更多)</li>
+			</ul>
+			<ul id="mybody">
+				
+			</ul>
+			<button type="button" id="btn">更多</button>
+		</div>
+	</body>
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		
+			
+		$(document).ready(function() {
+			
+			var data = [{
+				name: '言语之庭'
+			}, {
+				name: '斯托克'
+			}, {
+				name: '宿醉'
+			}, {
+				name: '巨人捕手杰克'
+			}, {
+				name: '副作用'
+			}]
+			var mybody = $('#mybody');
+			console.log(mybody[0])
+			function apply(){
+				mybody[0].innerHTML = '';
+				for (var i = 0; i < data.length; i++) {
+					mybody[0].innerHTML+=
+					`<li>${data[i].name}</li>`
+				}
+			}
+			apply();
+			
+			
+			
+			
+			$('p').css({
+				'font-size': '20px'
+			})
+			$('li').css({
+				'margin-top': '10px',
+				'font-size': '20px',
+				'height': '40px',
+				'line-height': '40px'
+			})
+			$('span').css('color', 'red')
+
+			$('ul:eq(0)').css({
+				'justify-content': 'space-between',
+				'color': 'green',
+				'display': 'flex'
+			})
+
+			function Style() {
+				$('li').css({
+					'margin-top': '10px',
+					'font-size': '20px',
+					'height': '40px',
+					'line-height': '40px'
+				})
+				$('ul:eq(1)').find('li:even').css('background-color', 'rgba(0,0,0,0.2)')
+				$('ul:eq(1)').find('li:eq(2)').css('background-color', '#ff99cc')
+			}
+			Style();
+			// var arr = ['血肉之躯', '7号房的礼物', '惊声尖笑']
+			var a = 0;
+			$('#btn').click(function() {
+				if (a % 2 == 0) {
+					// for (var i = 0; i < arr.length; i++) {
+					// 	$('#mybody>li:last').append('<li>' + arr[i] + '</li>')
+					data.push({name:'血肉之躯'},{name:'7号房的礼物'},{name:'惊声尖笑'})
+					apply();
+					Style();
+					// }
+				} else {
+					data.splice(data.length - 3);
+					apply();
+					Style();
+				}
+				a++	
+				console.log(a)
+			})
+		})
+	</script>
+</html>
